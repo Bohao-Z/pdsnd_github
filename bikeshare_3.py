@@ -33,7 +33,7 @@ def get_filters():
         day = input('Please try again:') # check and re-input
 
     print('-'*40)
-    return city, month, day
+    return city, month, day # return
 
 
 def load_data(city, month, day):
@@ -53,10 +53,10 @@ def load_data(city, month, day):
                  'washington': 'washington.csv' }
     weekday_data = {'monday': 0, 'tuesday': 1, 'wednesday': 2, 'thursday': 3, 'friday': 4,
                 'saturday': 5, 'sunday': 6}
-    df = pd.read_csv(city_data[city.lower()])
-    if month.lower() != 'all':
+    df = pd.read_csv(city_data[city.lower()]) #read data
+    if month.lower() != 'all': # filter data
         df = df[pd.to_datetime(df['Start Time']).apply(lambda x: x.month) == month_data[month.lower()]]
-    if day.lower() != 'all':
+    if day.lower() != 'all': # filter data
         df = df[pd.to_datetime(df['Start Time']).apply(lambda x: x.weekday()) == weekday_data[day.lower()]]
 
     return df
